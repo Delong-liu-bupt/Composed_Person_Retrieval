@@ -1,0 +1,15 @@
+pandas
+tqdm
+omegaconf
+iopath
+timm
+decord
+opencv-python
+transformers==4.39.3
+fairscale
+einops
+scikit-image
+spacy
+prettytable
+webdataset
+pycocoevalcap

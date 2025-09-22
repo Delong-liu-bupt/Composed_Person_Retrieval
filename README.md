@@ -1,6 +1,5 @@
-# Composed Person Retrieval and the ITCPR Benchmark
+# [NeurIPS 2025] Composed Person Retrieval and the ITCPR Benchmark
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/word-for-person-zero-shot-composed-person/zero-shot-composed-person-retrieval-on-itcpr)](https://paperswithcode.com/sota/zero-shot-composed-person-retrieval-on-itcpr?p=word-for-person-zero-shot-composed-person)
 [![arXiv](https://img.shields.io/badge/Arxiv-2311.16515-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2311.16515)
 [![Hugging Face](https://img.shields.io/badge/HuggingFace-ITCPR-yellow?logo=huggingface)](https://huggingface.co/datasets/a1557811266/ITCPR)
 [![Hugging Face](https://img.shields.io/badge/HuggingFace-SynCPR-yellow?logo=huggingface)](https://huggingface.co/datasets/a1557811266/SynCPR)
@@ -11,6 +10,8 @@
 * **2023.11.25:** ITCPR dataset publicly available for download.
 * **2025.05.20:** The previous training and testing code has been updated and is now located in the 'old_project' folder. The new code and data will be open-sourced soon.
 * **2025.05.26:** SynCPR dataset publicly available for download.
+* **2025.09.18:** Our paper *“Automatic Synthetic Data and Fine-grained Adaptive Feature Alignment for Composed Person Retrieval”* has been **accepted to NeurIPS 2025**! 🎉 The related training and testing code will be open-sourced within one week. 
+* **2025.09.22:** All retrieval-related training and inference code has been **open-sourced**!. 
 ---
 
 ## Introduction: Composed Person Retrieval (CPR)
