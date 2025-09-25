@@ -25,6 +25,7 @@ Official PyTorch implementation of **FAFA** (Fine-grained Adaptive Feature Align
 
     * [5.1. Run ▶️](#51-run-)
     * [5.2. Outputs 📈](#52-outputs-)
+    * [5.3. Pre-trained Model 💾](#53-pre-trained-model-)
 * [Part II — SynCPR Dataset 🗃️](#part-ii--syncpr-dataset-)
 
   * [6. Overview 🧭](#6-overview-)
@@ -217,6 +218,14 @@ Optional:
 * Retrieval metrics: **Recall\@1/5/10**, **mAP**
 * Results saved to `inference_results_{model_name}.json`
 
+#### 5.3. Pre-trained Model 💾
+
+We also provide the **official released model weights** corresponding to the paper version.
+You can directly download and use it without additional training.
+Notably, its performance is **slightly higher than the numbers reported in the paper**.
+
+👉 [Download Pre-trained Model](https://drive.google.com/file/d/10sYj3bxddFhku_OKZVcvurUPQQQxXw3Q/view?usp=sharing)
+
 ---
 
 ## Part II — SynCPR Dataset 🗃️
@@ -232,75 +241,49 @@ Optional:
 ### 7. Construction Pipeline 🏗️
 
 1. **Textual Quadruple Generation**
-   Using [Qwen2.5-70B](https://github.com/QwenLM/Qwen2.5-VL), we generate **140,500 textual quadruples**. Each contains two captions (reference & target), a relative edit description, and metadata.
+   Using [Qwen2.5-70B](https://github.com/QwenLM/Qwen2.5-VL), we generate **140,500 textual quadruples**.
 
 2. **Image Generation**
-   With a fine-tuned **LoRA** ([LoRA](https://arxiv.org/abs/2106.09685)) on **Flux.1** ([Flux.1](https://github.com/black-forest-labs/flux)):
-
-   * For each quadruple, **five image pairs** are produced using the most realistic setting (β = 1).
-   * Another **five image pairs** use a randomly sampled β ∈ (0, 1) for style diversity.
-     Combined with relative captions, this yields **2,810,000 valid triplets**.
+   With a fine-tuned **LoRA** ([LoRA](https://arxiv.org/abs/2106.09685)) on **Flux.1** ([Flux.1](https://github.com/black-forest-labs/flux)) we create **2.81M triplets**.
 
 3. **Rigorous Filtering**
-   Applying strict criteria, we retain **1,153,220 high-quality triplets** across **177,530 unique GIDs**.
-   Average caption length: **13.3 words**; vocabulary size: **4,370 distinct words**.
+   After filtering, **1.15M high-quality triplets** remain, covering **177K unique GIDs**.
 
 ---
 
 ### 8. Key Features ✨
 
-* **Diversity** — Broad coverage of scenes, ages, attire, clarity, and appearance.
-* **Realism** — Realism-oriented fine-tuning and advanced generative backbones.
-* **Scale** — Over **1.15M** curated triplets with rich, varied captions.
-* **Comprehensiveness** — Synthetic construction enables wide attribute coverage beyond manual datasets.
+* **Diversity** — scenes, ages, attire, clarity, and appearance
+* **Realism** — realism-oriented fine-tuning with advanced generative backbones
+* **Scale** — over **1.15M** curated triplets with varied captions
+* **Comprehensiveness** — synthetic construction enables wider attribute coverage
 
 ---
 
 ### 9. Data Structure 📐
 
-Each sample is defined in `SynCPR.json` (see [Hugging Face dataset page](https://huggingface.co/datasets/a1557811266/SynCPR)). The JSON is a list of dictionaries:
+Each sample is defined in `SynCPR.json` (see [Hugging Face dataset page](https://huggingface.co/datasets/a1557811266/SynCPR)).
 
-Fields:
+**Fields:**
 
-* `reference_caption` — text used to generate the reference image
-* `target_caption` — text used to generate the target image
-* `reference_image_path` — file path to reference image
-* `target_image_path` — file path to target image
-* `edit_caption` — relative description of the change from reference to target
-* `cpr_id` — group identifier for samples derived from the same base description
+* `reference_caption` / `target_caption`
+* `reference_image_path` / `target_image_path`
+* `edit_caption`
+* `cpr_id`
 
 **Example**
 
 ```json
 [
   {
-    "reference_caption": "The young woman with black hair is wearing an ebony black blouse, a navy blue skirt, and black heeled sandals. She is holding a silver clutch.",
-    "target_caption": "The young woman with black hair is wearing an ebony black blouse, a light gray skirt, and black heeled sandals. She is carrying a large black leather handbag.",
+    "reference_caption": "The young woman ... silver clutch.",
+    "target_caption": "The young woman ... black leather handbag.",
     "reference_image_path": "test2/sub_img/img_left/10732-1_left.png",
     "target_image_path": "test2/sub_img/img_right/10732-1_right.png",
     "edit_caption": "Wearing light gray skirt, carrying a large black leather handbag.",
     "cpr_id": 0
-  },
-  {
-    "reference_caption": "The young woman with black hair is wearing an ebony black blouse, a light gray skirt, and black heeled sandals. She is carrying a large black leather handbag.",
-    "target_caption": "The young woman with black hair is wearing an ebony black blouse, a navy blue skirt, and black heeled sandals. She is holding a silver clutch.",
-    "reference_image_path": "test2/sub_img/img_right/10732-1_right.png",
-    "target_image_path": "test2/sub_img/img_left/10732-1_left.png",
-    "edit_caption": "Wearing navy blue skirt, holding a silver clutch.",
-    "cpr_id": 1
   }
 ]
-```
-
-**On-disk layout (recommended)**
-
-```
-/path/to/SynCPR/
-├── test1/
-├── test2/
-├── test3/
-├── test4/
-└── SynCPR.json
 ```
 
 ---
@@ -320,8 +303,6 @@ This work builds upon **[LAVIS](https://github.com/salesforce/LAVIS)** and **[SP
 
 ## Citation 📝
 
-If you use **FAFA** or **SynCPR** in your research, please cite:
-
 ```bibtex
 @misc{liu2025automaticsyntheticdatafinegrained,
   title         = {Automatic Synthetic Data and Fine-grained Adaptive Feature Alignment for Composed Person Retrieval},
@@ -333,3 +314,4 @@ If you use **FAFA** or **SynCPR** in your research, please cite:
   url           = {https://arxiv.org/abs/2311.16515}
 }
 ```
+
