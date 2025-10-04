@@ -1,4 +1,4 @@
-# \[NeurIPS 2025] FAFA & SynCPR: Fine-grained Adaptive Feature Alignment and a Synthetic Dataset for Composed Person Retrieval
+# \[NeurIPS 2025] Automatic Synthetic Data and Fine-grained Adaptive Feature Alignment for Composed Person Retrieval
 
 Official PyTorch implementation of **FAFA** (Fine-grained Adaptive Feature Alignment) and the accompanying **SynCPR** synthetic dataset for Composed Person Retrieval (CPR).
 
