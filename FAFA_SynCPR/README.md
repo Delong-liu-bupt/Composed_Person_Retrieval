@@ -224,7 +224,7 @@ We also provide the **official released model weights** corresponding to the pap
 You can directly download and use it without additional training.
 Notably, its performance is **slightly higher than the numbers reported in the paper**.
 
-👉 [Download Pre-trained Model](https://drive.google.com/file/d/10sYj3bxddFhku_OKZVcvurUPQQQxXw3Q/view?usp=sharing)
+👉 [Download Pre-trained Model](https://drive.google.com/file/d/1Bf2Ia7zmxx5k3Dj-nRr3CLbAqc_zkM0y/view?usp=sharing)
 
 ---
 
