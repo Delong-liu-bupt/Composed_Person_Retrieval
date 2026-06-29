@@ -109,7 +109,6 @@ We are deeply thankful to the creators of the Celebrities-ReID, PRCC, and LAST d
 - **PRCC**: "Person Re-identification by Contour Sketch under Moderate Clothing Change" - [View Paper](https://arxiv.org/abs/2002.02295)
 - **LAST**: "Large-Scale Spatio-Temporal Person Re-identification: Algorithms and Benchmark" - [View Paper](https://arxiv.org/abs/2105.15076)
 ---
-Certainly! You can use the following Markdown paragraph for your GitHub repository to instruct users to cite your paper if they utilize your code and dataset. Here's how you can format it:
 
 ## Word4Per Codes
 
